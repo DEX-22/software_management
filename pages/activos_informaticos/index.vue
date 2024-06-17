@@ -23,20 +23,7 @@
                         </div>
                         </div>
                     </div>
-                </div>
-                <!-- <div  v-for="item in productList" class="card w-80 bg-base-100 shadow-xl">
-                    <figure class="w-full h-60 p-4"><img class="h-full" :src="item.image" alt="Shoes" /></figure>
-                    <div class="card-body">
-                        <h2 class="card-title">
-                            {{ item?.title }}
-                            <div class="badge badge-secondary">NEW</div>
-                        </h2>
-                        <p class="h-10 truncate">{{ item?.description }}</p>
-                        <div class="card-actions justify-end">
-                            <div class="badge badge-outline">{{ item?.category }}</div>
-                        </div>
-                    </div>
-                </div> -->
+                </div> 
             </section>
 
         </template>
