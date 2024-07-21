@@ -6,8 +6,8 @@
         <div class=" col-span-5 row-span-1 ">
             <Navbar />
         </div>
-        <div class=" col-span-5 row-span-11 overflow-visible p-10">
-            <section class="h-full   bg-slate-500">
+        <div class=" col-span-5 row-span-11 overflow-visible bg-slate-600 p-10">
+            <section class="h-full   ">
                 <slot />
             </section>
         </div>
