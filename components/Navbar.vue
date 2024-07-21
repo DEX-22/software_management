@@ -1,11 +1,11 @@
 <template>
   <div class="navbar bg-base-100 h-full">
     <div class="flex-1 mx-2">
-      <Breadcrumb />
+      
     </div>
     <div class="flex-none">
       <div class="dropdown dropdown-end">
-        <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+        <div v-if="false" tabindex="0" role="button" class="btn btn-ghost btn-circle">
           <div class="indicator">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
               stroke="currentColor">
@@ -15,17 +15,9 @@
             <span class="badge badge-sm indicator-item">8</span>
           </div>
         </div>
-        <div tabindex="0" class="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow">
-          <div class="card-body">
-            <span class="font-bold text-lg">8 Items</span>
-            <span class="text-info">Subtotal: $999</span>
-            <div class="card-actions">
-              <button class="btn btn-primary btn-block">View cart</button>
-            </div>
-          </div>
-        </div>
+         
       </div>
-      <div class="dropdown dropdown-end">
+      <div v-if="false" class="dropdown dropdown-end">
         <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
           <div class="w-10 rounded-full">
             <img alt="Tailwind CSS Navbar component"
