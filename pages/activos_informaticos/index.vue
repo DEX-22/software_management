@@ -2,12 +2,13 @@
     <NuxtLayout name="modules" title="ACTIVOS INFORMATICOS">
 
         <template #header>
-            <button class="btn">
-                Crear
+            <button class="btn" @click="toggleModal">
+                Nuevo
             </button>
         </template>
         <template #main>
-            <section class="h-full  grid grid-cols-3 grid-rows-2 gap-4" >
+            <ActivoTable :items="activosInformaticos" :labels="labels" />
+            <section v-if="false" class="h-full  grid grid-cols-3 grid-rows-2 gap-4" >
                 <div  v-for="item in productList" class="grid grid-cols-3 grid-rows-1 card card-side bg-base-100 shadow-xl">
                     <figure class=" col-span-1 p-4"><img class="h-full"  src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
                             alt="Movie" /></figure>
@@ -28,23 +29,39 @@
 
         </template>
     </NuxtLayout>
+    <ActivoCreate v-if="showModal" @closeMe="toggleModal" />
 </template>
 <script setup>
 import { reactive } from 'vue'
-let productList = reactive([])
+import ActivosInformaticosService from '@/services/activos_informaticos'
+const activosInformaticos = reactive([])
+const labels = reactive([])
 
-await getProducts()
+await getActivosInfomaticos()
+ 
+async function getActivosInfomaticos() {
 
-async function getProducts() {
+    const data = await ActivosInformaticosService.getAll()
+    
 
-    const { data, error } = await useFetch('https://fakestoreapi.com/products/category/electronics')
+    
+    data.forEach((element,index) => {
+        
+        delete element.created_at
 
-    data.value.forEach(element => {
-        productList.push(element)
+        if(index == 0)
+            Object.assign(labels,Object.keys(data[0]))
+
+        activosInformaticos.push(element)
 
     });
 
 
 }
 
+const showModal = ref(false)
+
+function toggleModal() {
+    showModal.value = !showModal.value
+}
 </script>
