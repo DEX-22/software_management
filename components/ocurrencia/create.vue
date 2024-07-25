@@ -6,7 +6,8 @@ import OcurrenciasService from '@/services/ocurrencias';
 import PersonalService from '@/services/personal'
 
 const modalCreateBug = ref(null)
-const emit = defineEmits(['closeMe'])
+const emit = defineEmits(['closeMe','add'])
+const props = defineProps(['onlyView','data'])
 const activosList = reactive([])
 const areasList = reactive([])
 const personalList = reactive([])
@@ -19,15 +20,15 @@ const ocurrencia = reactive({
     personal_id: null,
     fecha,
     tipo_mantenimiento: '',
-    prioridad: null,
+    prioridad: '',
     descripcion:''
 })
-
-onBeforeMount(async ()=>{
-    const activos = await ActivosInformaticosService.getAll()
+ const activos = await ActivosInformaticosService.getAll()
     const areas = await AreasService.getAll()
     const personal = await PersonalService.getAll()
 
+onBeforeMount(async ()=>{
+   
     if(activos.length > 0){
         activos.forEach(({id,nombre})=>activosList.push({id,nombre}))
     }
@@ -46,11 +47,13 @@ onMounted(()=>{
 })
 
 async function save(){
+
     ocurrencia.estado = "PENDIENTE"
     const res = await OcurrenciasService.create(ocurrencia)
-    console.log(res)
+    // console.log(res)
 
     closeModal()
+    emit('add')
 }
 
 function getTodayToInput(){
@@ -127,7 +130,7 @@ function closeModal(){
             </div>
             <div class="form-control w-full max-w-xs mx-2">
                 <div class="label">
-                    <span class="label-text">Personal responsable</span>
+                    <span class="label-text">Solicitante</span>
                 </div>
                 <VSelect
                 v-model="ocurrencia.personal_id"
@@ -136,14 +139,14 @@ function closeModal(){
                 label="nombre"
                 /> 
             </div>  
-            <label class="   ">
+            <div class=" w-full col-start-1 col-end-4  form-control ">
                 <div class="    ">  
                     <span> Descripcion del incidente </span>
                 </div>
                 <textarea 
                 v-model="ocurrencia.descripcion"
                 class="textarea textarea-bordered w-full"></textarea>
-            </label>
+            </div>
         </div>
     </section>
     <div class="modal-action flex justify-center gap-4">
@@ -156,26 +159,26 @@ function closeModal(){
   </div>
 </dialog>
 
-</template>
-<style scoped>
+</template> 
+<style lang="scss" scoped>
 >>> {
-  --vs-controls-color: oklch(var(--n));
-  --vs-border-color: oklch(var(--n));
+    
+  --vs-controls-color: oklch(var(--n))
+  --vs-border-color: oklch(var(--n))
 
-  --vs-dropdown-bg: oklch(var(--b1));
-  --vs-dropdown-color: oklch(var(--n));
-  --vs-dropdown-option-color: oklch(var(--p));
+  --vs-dropdown-bg: oklch(var(--b1))
+  --vs-dropdown-color: oklch(var(--n))
+  --vs-dropdown-option-color: oklch(var(--p))
 
-  --vs-selected-bg: oklch(var(--s));
-  --vs-selected-color: #eeeeee;
+  --vs-selected-bg: oklch(var(--s))
+  --vs-selected-color: #eeeeee
 
-  --vs-search-input-color: #eeeeee;
+  --vs-search-input-color: #eeeeee
 
-  --vs-dropdown-option--active-bg: oklch(var(--pc));
+  --vs-dropdown-option--active-bg: oklch(var(--pc))
   
 }
-</style>
-<style lang="scss" scoped>
+
 
 .form{
     @apply grid grid-cols-3 place-items-center p-4 gap-2 ;
