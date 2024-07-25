@@ -3,6 +3,12 @@ export default defineNuxtConfig({
   ssr: false,
 
   devtools: { enabled: true },
-  modules: ["@nuxtjs/tailwindcss", "nuxt-feather-icons"],
-  
+  modules: [
+    "@nuxtjs/tailwindcss",
+     "nuxt-feather-icons"],
+  nitro: {
+     experimental: {
+       websocket: true
+     },
+   }
 })

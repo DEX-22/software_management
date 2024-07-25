@@ -3,9 +3,7 @@ import { createClient } from '@supabase/supabase-js'
 class SupaService{
     instance
     constructor(){
-          
-        console.log(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_PASS)
-
+         
         if(!this.instance)
             this.instance = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_PASS,['public'])
 

@@ -14,6 +14,8 @@
     "@supabase/supabase-js": "^2.44.4",
     "nuxt": "^3.12.1",
     "nuxt-feather-icons": "^1.2.3",
+    "socket.io": "^4.7.5",
+    "socket.io-client": "^4.7.5",
     "vue": "^3.4.27",
     "vue-router": "^4.3.3",
     "vue-select": "^4.0.0-beta.6"
