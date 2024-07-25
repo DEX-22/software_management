@@ -1,7 +1,8 @@
 <template>
   <div class="navbar bg-base-100 h-full">
     <div class="flex-1 mx-2">
-      
+      <ChevronLeftIcon />
+      <span class="block hover:font-bold hover:text-secondary cursor-pointer" @click="$router.back">Regresar</span>
     </div>
     <div class="flex-none">
       <div class="dropdown dropdown-end">

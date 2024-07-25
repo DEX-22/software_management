@@ -13,7 +13,7 @@ import { reactive } from 'vue';
 
 const items = reactive([{
     icon:"BellIcon",
-    text:"Ocurrencias",
+    text:"Incidencias",
     link: "/ocurrencias",
 },{
     icon:"UserIcon",
